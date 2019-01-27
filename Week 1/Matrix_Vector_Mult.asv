@@ -44,12 +44,10 @@ outer_prod(u,outer_prod(v',A))
 answer = u*(v'*A)
 
 % (Au)*(v^tB)
-outer_prod(matvec2_col(A,u),outer_prod(v',A))
-answer = (A*u)*(v'*A)
+matvec2_col(A,u) 
+outer_prod(v',A)
 
-% A*(Dx)
-outer_prod(A,matvec2_col(D,x))
-answer = A*(D*x)
+answer = (A*u)*(v'*B)
 %% FUNCTIONS
 function y = matvec(A,x)
     % Simple matrix vector multiplication
