@@ -50,6 +50,11 @@ answer = (A*u)*(v'*A)
 % A*(Dx)
 outer_prod(A,matvec2_col(D,x))
 answer = A*(D*x)
+
+%% Tridiagnal matrix
+test = [1 3 5 2 3];
+y = T(test)
+
 %% FUNCTIONS
 function y = matvec(A,x)
     % Simple matrix vector multiplication
@@ -113,5 +118,18 @@ function C = outer_prod(A,B)
     for k = 1:p
         % Add in k-th outer product
         C = C + A(:,k)*B(k,:);
+    end
+end
+
+function y = T(vec)
+    y = zeros(1,length(vec));
+    for i = 1:length(vec)
+        if (i == 1)
+            y(i) = -0 + 2*vec(i) - vec(i+1);
+        elseif (i == length(vec))
+            y(i) = vec(i-1) + 2*vec(i) - 0;
+        else
+            y(i) = vec(i-1) + 2*vec(i) + vec(i+1);
+        end
     end
 end
